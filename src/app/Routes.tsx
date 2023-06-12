@@ -9,11 +9,13 @@ import { MainPage } from "../pages/main/MainPage";
 import { DemoPage } from "../pages/demo/DemoPage";
 
 
+
 export type RouteListType = {
     name: string;
     index? :boolean,
     path: string,
-    element: ReactElement
+    element?: ReactElement,
+    Component?: React.ComponentType
 }[]
 
 export const routeList : RouteListType = [
@@ -25,7 +27,7 @@ export const routeList : RouteListType = [
     },
     {
         name: "Demo",
-        path: "/Demo",
+        path: "demo",
         element : <DemoPage />
     }
 ]
@@ -35,7 +37,7 @@ const browserRouteList = routeList.map(({name, ...rest})=> rest);
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <MainLayout/>,
+        Component: MainLayout,
         children: browserRouteList
     },
 ]);

@@ -18,8 +18,14 @@ const DemoComponent = () => (
         >
           Demo Using Framer Motion
         </h1>
+        <p className="text-white">
+          This is the order pizza demo, first you choose what pizza's base do you want. then, you can add many topping that you like.
+          in the end, the pizza with its topping and base will be displayed.
+        </p>
       </section>
-      <section>
+      <section
+        className="bg-pink-600 border-pink-700 rounded p-3 min-h-[500px] h-[500px]"
+      >
         <Outlet />
       </section>
     </div>
@@ -47,11 +53,11 @@ export const DemoPage = () => {
 
   let element = useRoutes([
     {
-      path: "/",
       element: <DemoComponent />,
+      path: "/",
       children: [
         {
-          path: "/",
+          path: "hello",
           element: <HomeDemo />
         },
         {

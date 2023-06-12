@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import { Route, Routes, useRoutes} from "react-router-dom";
 import {ReactElement } from "react";
 
 // # LAYOUT
@@ -33,14 +33,28 @@ export const routeList : RouteListType = [
 ]
 
 
-const browserRouteList = routeList.map(({name, ...rest})=> rest);
-const router = createBrowserRouter([
-    {
-        path: "/",
-        Component: MainLayout,
-        children: browserRouteList
-    },
-]);
+// const browserRouteList = routeList.map(({name, ...rest})=> rest);
+// const RootRouter = () => {
+//     return useRoutes([{
+//         element: <MainLayout />,
+//         path: "/",
+//         children: browserRouteList
+//     }])
+// }
+
+const RootRouter = () => {
+    return (
+      <Routes >
+        <Route path="/" element={<MainLayout />}>
+          <Route
+            index
+            element={<MainPage />}
+          />
+          <Route path="/demo/*" element={<DemoPage />} />
+        </Route>
+      </Routes>
+    )
+}
 
 
-export default router
+export default RootRouter

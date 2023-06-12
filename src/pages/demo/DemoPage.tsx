@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, useRoutes } from "react-router-dom"
+import { Outlet, useRoutes, Route, Routes } from "react-router-dom"
 import { BaseDemo } from "./pages/BaseDemo";
 import { HomeDemo } from "./pages/HomeDemo";
 
@@ -57,7 +57,8 @@ export const DemoPage = () => {
       path: "/",
       children: [
         {
-          path: "hello",
+          // path: "/",
+          index: true,
           element: <HomeDemo />
         },
         {
@@ -67,6 +68,5 @@ export const DemoPage = () => {
       ]
     }
   ])
-
   return element;
 }

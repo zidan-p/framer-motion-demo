@@ -39,6 +39,24 @@ export type PizzaType = {
   toppings: string[]
 }
 
+export const pageContainerVariant = {
+  hidden : {x : "100%"},
+  visible: {
+    x : 0,
+    transition: {
+      type:"spring", 
+      bounce:"0",
+    
+      // # the cotainer animation will be waited until end, then the children animation will fired.
+      // # NOTE: it only work if the animation tree is already defined. ie, the children animation name is inherited from parent
+      // # don't fill the name even if it has same name
+      when: "beforeChildren"
+
+      // # NOTE: actualy there are a lesson that i didn't do. simply because i am in hurry. thas's "staggeringChildren"
+    }
+  }
+}
+
 export const DemoPage = () => {
 
   const [pizza, setPizza] = useState<PizzaType>({ base: "", toppings: [] });

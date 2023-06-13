@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PizzaType } from "../DemoPage"
 import { FC } from "react";
 import {motion} from "framer-motion";
+import { pageContainerVariant } from "../DemoPage";
 
 type OrderDemoProps = {
   pizza: PizzaType;
@@ -10,7 +11,12 @@ type OrderDemoProps = {
 export const OrderDemo : FC<OrderDemoProps> = ({pizza}) => {
   return (
   <>
-    <div className="h-full flex flex-col justify-center">
+    <motion.div 
+      variants={pageContainerVariant}
+      initial={"hidden"}
+      animate={"visible"}
+      className="h-full flex flex-col justify-center"
+    >
       <h1 className="text-2xl text-white text-center font-bold">
         Thank You for your order
       </h1>
@@ -41,7 +47,7 @@ export const OrderDemo : FC<OrderDemoProps> = ({pizza}) => {
           </motion.button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   </>
   )
 }

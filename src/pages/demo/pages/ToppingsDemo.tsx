@@ -3,7 +3,7 @@ import { PizzaType } from "../DemoPage";
 import { Link } from "react-router-dom";
 import ArrowRight from "../../../icon/components/ArrowRight";
 import {motion} from "framer-motion";
-
+import { pageContainerVariant } from "../DemoPage";
 
 type ToppingsDemoProps = {
   addTopping: (topping: string) => void;
@@ -16,7 +16,12 @@ export const ToppingsDemo : FC<ToppingsDemoProps> = ({addTopping, pizza}) => {
 
   return (
     <>
-      <div className="h-full ">
+    <motion.div 
+      variants={pageContainerVariant}
+      initial={"hidden"}
+      animate={"visible"}
+      className="h-full "
+    >
       <div className="flex justify-between">
         <h1 className="text-2xl text-pink-200 text-center font-bold pb-3">
           Step 2, Add toppings as many as you want
@@ -58,7 +63,7 @@ export const ToppingsDemo : FC<ToppingsDemoProps> = ({addTopping, pizza}) => {
           })}
         </ul>
       </section>
-    </div>   
+    </motion.div>   
     </>
   )
 }

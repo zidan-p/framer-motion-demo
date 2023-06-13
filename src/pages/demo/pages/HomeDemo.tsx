@@ -1,37 +1,57 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { pageContainerVariant } from "../DemoPage"
+
+
+const buttonVariant = {
+  hidden: {opacity: 0},
+  visible: {
+    opacity: "100%",
+    transition: {duration: 0.5}
+  }
+}
+
+const testVariant = {
+  hidden : {x : "100%"},
+  visible: {
+    x : 0,
+    transition: {
+      type:"spring", 
+      bounce:"0",
+    
+      // # the cotainer animation will be waited until end, then the children animation will fired
+      when: "beforeChildren"
+    }
+  }
+}
 
 export const HomeDemo = () => {
   return (
-    <div className="h-full flex flex-col justify-center">
+    <motion.div 
+      variants={pageContainerVariant}
+      initial={"hidden"}
+      animate={"visible"}
+      className="h-full flex flex-col justify-center"
+    >
       {/** use provided component that render h1 from framer-motion */}
       <motion.h1 
-        //using css jsx inline to animation to this state
-        // animate={{fontSize: "20px"}} 
         className="text-2xl text-white text-center font-bold"
       >
         Order A Pizza
       </motion.h1>
-      {/* using transition options */}
       <div className="flex justify-center mt-3">
         <Link to={"base"}>
           <motion.button
-            // initial={{opacity: 0}}
-            // animate={{opacity: "100%"}}
-
-            // # some option that can be applied in this component
-            // transition={{delay: 0.8, duration: 1}}
-
-            // # hover animation
             whileHover={{
               boxShadow: "0px 0px 8px rgb(225,225,225)"
             }}
+            variants={buttonVariant}
             className=" bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
           >
             Start
           </motion.button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   )
 }

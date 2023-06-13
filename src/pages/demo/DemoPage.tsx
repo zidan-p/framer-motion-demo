@@ -26,7 +26,7 @@ const DemoComponent = () => (
         </p>
       </section>
       <section
-        className="bg-pink-600 border-pink-700 rounded p-3 min-h-[500px] h-[500px]"
+        className="bg-pink-600 border-pink-700 rounded p-3 min-h-[500px] h-[500px] overflow-hidden"
       >
         <Outlet />
       </section>

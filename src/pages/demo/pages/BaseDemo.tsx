@@ -11,7 +11,13 @@ type BaseDemoProps = {
 export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
   return(
-    <div className="h-full ">
+    <motion.div 
+      className="h-full "
+      initial={{x : "100%"}}
+      animate={{x : 0}}
+      // here the transition
+      transition={{type:"spring", bounce:"0"}}
+    >
       <div className="flex justify-between">
         <h1 className="text-2xl text-pink-200 text-center font-bold pb-3">
           Step 1, Choose your base
@@ -37,6 +43,7 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
       <motion.section 
         initial={{width: 0}}
         animate={{width: "100%"}}
+        transition={{delay: 1}}
         className="bg-pink-900 text-white p-2 rounded-sm mt-2"
       >
         {pizza.base === "" ?(
@@ -63,6 +70,6 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
           })}
         </ul>
       </section>
-    </div>   
+    </motion.div>   
   )
 }

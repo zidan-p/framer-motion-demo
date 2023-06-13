@@ -31,11 +31,14 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
             animate={{x: 0, opacity: "100%"}}
           >
             <Link to={"./../topping"}>
-              <button
-                  className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
+              <motion.button
+                whileHover={{
+                  boxShadow: "0px 0px 8px rgb(225,225,225)"
+                }}
+                className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
                 >
                   Next
-              </button>
+              </motion.button>
             </Link>
           </motion.div>
         )}

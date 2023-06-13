@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Outlet, useRoutes, Route, Routes } from "react-router-dom"
 import { BaseDemo } from "./pages/BaseDemo";
 import { HomeDemo } from "./pages/HomeDemo";
+import { ToppingsDemo } from "./pages/ToppingsDemo";
+import { OrderDemo } from "./pages/OrderDemo";
 
 
 const DemoComponent = () => (
@@ -32,7 +34,7 @@ const DemoComponent = () => (
   </div>
 )
 
-type PizzaType = {
+export type PizzaType = {
   base: string;
   toppings: string[]
 }
@@ -63,7 +65,15 @@ export const DemoPage = () => {
         },
         {
           path: "base",
-          element: <BaseDemo />
+          element: <BaseDemo addBase={addBase} pizza={pizza} />
+        },
+        {
+          path: "topping",
+          element: <ToppingsDemo addTopping={addTopping} pizza={pizza} />
+        },
+        {
+          path: "order",
+          element: <OrderDemo pizza={pizza} />
         }
       ]
     }

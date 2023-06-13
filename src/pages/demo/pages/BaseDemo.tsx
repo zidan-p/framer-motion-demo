@@ -1,11 +1,30 @@
 import { FC } from "react";
 import { PizzaType } from "../DemoPage";
 import { Link } from "react-router-dom";
-import {motion} from "framer-motion"
+import {motion, Variant} from "framer-motion"
+
 
 type BaseDemoProps = {
   addBase: (base: string) => void,
   pizza: PizzaType
+}
+
+// # this variabel is variant, it will be used in motion component as animation data
+// actually it's type also can be declared with Variant Type, but because for simplicity
+// let ignore that.
+// with variant we can separate between component and animation, this is what make variant great
+const containerVariant = {
+  hidden : {x : "100%"},
+  // # with variant, it possible to only specify transition foe certain animation
+  visible: {
+    x : 0,
+    transition: {type:"spring", bounce:"0"}
+  }
+}
+
+const buttonVariant = {
+  hidden : {x: "-100%", opacity: 0},
+  visible : {x: 0, opacity: "100%"}
 }
 
 export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
@@ -13,10 +32,12 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
   return(
     <motion.div 
       className="h-full "
-      initial={{x : "100%"}}
-      animate={{x : 0}}
-      // here the transition
-      transition={{type:"spring", bounce:"0"}}
+
+      // # here how to use variant, after the variant variable is assigned in component
+      // # another component use that variant to define what behavior its animation
+      variants={containerVariant}
+      initial={"hidden"}
+      animate={"visible"}
     >
       <div className="flex justify-between">
         <h1 className="text-2xl text-pink-200 text-center font-bold pb-3">
@@ -25,10 +46,13 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
         {pizza.base && (
 
           <motion.div
-            // How to use initial state.
-            // it's mean, when the component first rendered, the initial animation state is how component first look
-            initial={{x: "-100%", opacity: 0}}
-            animate={{x: 0, opacity: "100%"}}
+            // # another greatness of variant is it can inherited name of used animation to its children.
+            variants={buttonVariant}
+            // that's mean i don't have to write the following props
+            // initial={"hidden"}
+            // animate={"visible"}
+
+            // because it already have same name as it parent
           >
             <Link to={"./../topping"}>
               <motion.button
@@ -44,10 +68,7 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
         )}
       </div>
       <motion.section 
-        initial={{width: 0}}
-        animate={{width: "100%"}}
-        transition={{delay: 1}}
-        className="bg-pink-900 text-white p-2 rounded-sm mt-2"
+        className="bg-pink-900 text-white p-2 rounded-sm mt-2 overflow-hidden"
       >
         {pizza.base === "" ?(
           "None"

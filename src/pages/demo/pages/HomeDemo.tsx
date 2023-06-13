@@ -1,18 +1,26 @@
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion"
 
 export const HomeDemo = () => {
   return (
     <div className="h-full flex flex-col justify-center">
-      <h1 className="text-2xl text-white text-center font-bold">
+      {/** use provided component that render h1 from framer-motion */}
+      <motion.h1 
+        //using css jsx inline to animation to this state
+        animate={{fontSize: "20px"}} 
+        className="text-2xl text-white text-center font-bold"
+      >
         Order A Pizza
-      </h1>
+      </motion.h1>
       <div className="flex justify-center mt-3">
         <Link to={"base"}>
-          <button
+          <motion.button
+            //some animation with button
+            animate={{width:"100px"}}
             className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
           >
             Start
-          </button>
+          </motion.button>
         </Link>
       </div>
     </div>

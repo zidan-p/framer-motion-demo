@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { PizzaType } from "../DemoPage";
 import { Link } from "react-router-dom";
+import {motion} from "framer-motion"
 
 type BaseDemoProps = {
   addBase: (base: string) => void,
@@ -16,22 +17,34 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
           Step 1, Choose your base
         </h1>
         {pizza.base && (
-          <Link to={"./../topping"}>
-            <button
-                className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
-              >
-                Next
-            </button>
-          </Link>
+
+          <motion.div
+            // How to use initial state.
+            // it's mean, when the component first rendered, the initial animation state is how component first look
+            initial={{x: "-100%", opacity: 0}}
+            animate={{x: 0, opacity: "100%"}}
+          >
+            <Link to={"./../topping"}>
+              <button
+                  className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
+                >
+                  Next
+              </button>
+            </Link>
+          </motion.div>
         )}
       </div>
-      <section className="bg-pink-900 text-white p-2 rounded-sm mt-2">
+      <motion.section 
+        initial={{width: 0}}
+        animate={{width: "100%"}}
+        className="bg-pink-900 text-white p-2 rounded-sm mt-2"
+      >
         {pizza.base === "" ?(
           "None"
         ):(
           pizza.base
         )}
-      </section>
+      </motion.section>
       <section className="mt-2">
         <ul>
           {bases.map(base => {

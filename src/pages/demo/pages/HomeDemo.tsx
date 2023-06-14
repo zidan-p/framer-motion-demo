@@ -7,23 +7,20 @@ const buttonVariant = {
   hidden: {opacity: 0},
   visible: {
     opacity: "100%",
-    transition: {duration: 0.5}
+    transition: {
+      duration: 0.5,
+      delay: 1
+    }
+  },
+  hover: {
+    boxShadow: "0px 0px 8px rgb(225,225,225)",
+    // # we use array to define keyframe
+    // # when using keyframe, the animation will generated based on the sequences 
+    rotateZ: ["0deg","10deg","-10deg","10deg","-10deg", "0deg" ]
   }
 }
 
-const testVariant = {
-  hidden : {x : "100%"},
-  visible: {
-    x : 0,
-    transition: {
-      type:"spring", 
-      bounce:"0",
-    
-      // # the cotainer animation will be waited until end, then the children animation will fired
-      when: "beforeChildren"
-    }
-  }
-}
+
 
 export const HomeDemo = () => {
   return (
@@ -42,9 +39,9 @@ export const HomeDemo = () => {
       <div className="flex justify-center mt-3">
         <Link to={"base"}>
           <motion.button
-            whileHover={{
-              boxShadow: "0px 0px 8px rgb(225,225,225)"
-            }}
+            whileHover="hover"
+            initial="hidden"
+            animate="visible"
             variants={buttonVariant}
             className=" bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
           >

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { pageContainerVariant } from "../DemoPage"
+import { useEffect, useState } from "react"
 
 
 const buttonVariant = {
@@ -27,6 +28,13 @@ const buttonVariant = {
 
 
 export const HomeDemo = () => {
+
+  const [showSubTitle, setShowSubTitle] = useState(true);
+
+  useEffect(()=>{
+    setTimeout(()=>{setShowSubTitle(false)}, 1500)
+  },[])
+
   return (
     <motion.div 
       variants={pageContainerVariant}
@@ -40,6 +48,21 @@ export const HomeDemo = () => {
       >
         Order A Pizza
       </motion.h1>
+      <AnimatePresence >
+        {/* example useng animate presence */}
+        {/* this paragraph dissapear from DOM but framer-motion will calculate how it'll be animate */}
+        {/* that's because animation presence component */}
+        {showSubTitle && (
+          <motion.p
+
+            // to animate for disapearing from dom, it has to be asigned disapearing value in `exit` prop
+            exit={{opacity: 0}}
+            className="text-center text-pink-300"
+          >
+            start ordering
+          </motion.p>
+        )}
+      </AnimatePresence>
       <div className="flex justify-center mt-3">
         <Link to={"base"}>
           <motion.button

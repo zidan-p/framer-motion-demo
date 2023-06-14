@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Outlet, useRoutes, Route, Routes } from "react-router-dom"
+import { Outlet, useRoutes, Route, Routes, useLocation } from "react-router-dom"
 import { BaseDemo } from "./pages/BaseDemo";
 import { HomeDemo } from "./pages/HomeDemo";
 import { ToppingsDemo } from "./pages/ToppingsDemo";
 import { OrderDemo } from "./pages/OrderDemo";
+import { AnimatePresence } from "framer-motion";
 
 
 const DemoComponent = () => (
@@ -54,11 +55,16 @@ export const pageContainerVariant = {
 
       // # NOTE: actualy there are a lesson that i didn't do. simply because i am in hurry. thas's "staggeringChildren"
     }
+  },
+  exit: {
+    opacity: 0,
+    transition: {ease: "easeInOut"}
   }
 }
 
 export const DemoPage = () => {
 
+  const location = useLocation();
   const [pizza, setPizza] = useState<PizzaType>({ base: "", toppings: [] });
 
   const addBase = (base : string) => setPizza({ ...pizza, base })
@@ -71,30 +77,43 @@ export const DemoPage = () => {
     setPizza({ ...pizza, toppings: newToppings });
   }
 
-  let element = useRoutes([
-    {
-      element: <DemoComponent />,
-      path: "/",
-      children: [
-        {
-          // path: "/",
-          index: true,
-          element: <HomeDemo />
-        },
-        {
-          path: "base",
-          element: <BaseDemo addBase={addBase} pizza={pizza} />
-        },
-        {
-          path: "topping",
-          element: <ToppingsDemo addTopping={addTopping} pizza={pizza} />
-        },
-        {
-          path: "order",
-          element: <OrderDemo pizza={pizza} />
-        }
-      ]
-    }
-  ])
-  return element;
+  // let element = useRoutes([
+  //   {
+  //     element: <DemoComponent />,
+  //     path: "/",
+  //     children: [
+  //       {
+  //         // path: "/",
+  //         index: true,
+  //         element: <HomeDemo />
+  //       },
+  //       { 
+  //         path: "base",
+  //         element: <BaseDemo addBase={addBase} pizza={pizza} />
+  //       },
+  //       {
+  //         path: "topping",
+  //         element: <ToppingsDemo addTopping={addTopping} pizza={pizza} />
+  //       },
+  //       {
+  //         path: "order",
+  //         element: <OrderDemo pizza={pizza} />
+  //       }
+  //     ]
+  //   }
+  // ])
+  // return element;
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.key}> 
+        <Route path="/" element={<DemoComponent />} >
+          <Route index element={<HomeDemo />} />
+          <Route path="base" element={<BaseDemo addBase={addBase} pizza={pizza} />} />
+          <Route path="topping" element={<ToppingsDemo addTopping={addTopping} pizza={pizza} />} />
+          <Route path="order" element={<OrderDemo pizza={pizza} />} />
+        </Route>
+      </Routes>
+    </AnimatePresence>
+  )
 }

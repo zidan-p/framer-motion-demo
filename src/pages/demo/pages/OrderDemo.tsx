@@ -15,6 +15,7 @@ export const OrderDemo : FC<OrderDemoProps> = ({pizza}) => {
       variants={pageContainerVariant}
       initial={"hidden"}
       animate={"visible"}
+      exit={"exit"}
       className="h-full flex flex-col justify-center"
     >
       <h1 className="text-2xl text-white text-center font-bold">

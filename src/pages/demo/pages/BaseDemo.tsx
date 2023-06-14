@@ -22,6 +22,7 @@ export const BaseDemo : FC<BaseDemoProps> = ({ addBase, pizza }) => {
       variants={pageContainerVariant}
       initial={"hidden"}
       animate={"visible"}
+      exit={"exit"}
     >
       <div className="flex justify-between">
         <h1 className="text-2xl text-pink-200 text-center font-bold pb-3">

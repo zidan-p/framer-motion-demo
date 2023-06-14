@@ -40,6 +40,7 @@ export const HomeDemo = () => {
       variants={pageContainerVariant}
       initial={"hidden"}
       animate={"visible"}
+      exit={"exit"}
       className="h-full flex flex-col justify-center"
     >
       {/** use provided component that render h1 from framer-motion */}

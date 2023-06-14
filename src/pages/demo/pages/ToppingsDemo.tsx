@@ -20,6 +20,7 @@ export const ToppingsDemo : FC<ToppingsDemoProps> = ({addTopping, pizza}) => {
       variants={pageContainerVariant}
       initial={"hidden"}
       animate={"visible"}
+      exit={"exit"}
       className="h-full "
     >
       <div className="flex justify-between">

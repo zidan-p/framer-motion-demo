@@ -108,14 +108,20 @@ export const DemoPage = () => {
 
   return (
     <>
-      <Modal showModal={showModal} setShowModal={setShowModal}  />
-      <AnimatePresence mode="wait">
+      <Modal showModal={showModal} />
+      {/**
+       * NOTE: 
+       * `onExitComplete` here was used to make sure modal always close whenever the url change.
+       * therefor i didn't have to pass the `setShowModal` to target component.
+       * just use `Link` component to navigate so the modal aumaticlay closed.  
+       */}
+      <AnimatePresence mode="wait" onExitComplete={()=>setShowModal(false)}>
         <Routes location={location} key={location.key}> 
           <Route path="/" element={<DemoComponent />} >
             <Route index element={<HomeDemo />} />
             <Route path="base" element={<BaseDemo addBase={addBase} pizza={pizza} />} />
             <Route path="topping" element={<ToppingsDemo addTopping={addTopping} pizza={pizza} />} />
-            <Route path="order" element={<OrderDemo pizza={pizza} />} />
+            <Route path="order" element={<OrderDemo pizza={pizza} setShowModal={setShowModal} />} />
           </Route>
         </Routes>
       </AnimatePresence>

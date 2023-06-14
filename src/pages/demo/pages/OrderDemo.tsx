@@ -6,9 +6,10 @@ import { pageContainerVariant } from "../DemoPage";
 
 type OrderDemoProps = {
   pizza: PizzaType;
+  setShowModal: (state: boolean)=>void;
 }
 
-export const OrderDemo : FC<OrderDemoProps> = ({pizza}) => {
+export const OrderDemo : FC<OrderDemoProps> = ({pizza,setShowModal}) => {
   return (
   <>
     <motion.div 
@@ -37,16 +38,15 @@ export const OrderDemo : FC<OrderDemoProps> = ({pizza}) => {
         </ul>
       </section>
       <div className="flex justify-center mt-3">
-        <Link to={"/demo/"}>
           <motion.button
+            onClick={()=>setShowModal(true)}
             whileHover={{
               boxShadow: "0px 0px 8px rgb(225,225,225)"
             }}
             className="bg-pink-700 border border-pink-500 hover:bg-pink-600 active:bg-pink-500 text-white px-5 py-2 rounded"
           >
-            Start
+            End
           </motion.button>
-        </Link>
       </div>
     </motion.div>
   </>

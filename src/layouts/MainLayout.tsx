@@ -7,7 +7,7 @@ import { Outlet} from "react-router-dom";
 export const MainLayout = () => {
   return (
     <div className="min-h-screen flex">
-      <aside className="basis-1/6 h-screen overflow-auto border-r border-gray-700">
+      <aside className="basis-1/6 shrink-0 grow-0 h-screen overflow-auto border-r border-gray-700">
         <Sidebar routeList={routeList}/>
       </aside>
       <main className="basis-5/6 relative min-h-screen bg-gray-900">

@@ -5,6 +5,7 @@ import { HomeDemo } from "./pages/HomeDemo";
 import { ToppingsDemo } from "./pages/ToppingsDemo";
 import { OrderDemo } from "./pages/OrderDemo";
 import { AnimatePresence } from "framer-motion";
+import { Modal } from "./components/Modal";
 
 
 const DemoComponent = () => (
@@ -66,6 +67,7 @@ export const DemoPage = () => {
 
   const location = useLocation();
   const [pizza, setPizza] = useState<PizzaType>({ base: "", toppings: [] });
+  const [showModal, setShowModal] = useState(true);
 
   const addBase = (base : string) => setPizza({ ...pizza, base })
 
@@ -105,15 +107,18 @@ export const DemoPage = () => {
   // return element;
 
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.key}> 
-        <Route path="/" element={<DemoComponent />} >
-          <Route index element={<HomeDemo />} />
-          <Route path="base" element={<BaseDemo addBase={addBase} pizza={pizza} />} />
-          <Route path="topping" element={<ToppingsDemo addTopping={addTopping} pizza={pizza} />} />
-          <Route path="order" element={<OrderDemo pizza={pizza} />} />
-        </Route>
-      </Routes>
-    </AnimatePresence>
+    <>
+      <Modal showModal={showModal} setShowModal={setShowModal}  />
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.key}> 
+          <Route path="/" element={<DemoComponent />} >
+            <Route index element={<HomeDemo />} />
+            <Route path="base" element={<BaseDemo addBase={addBase} pizza={pizza} />} />
+            <Route path="topping" element={<ToppingsDemo addTopping={addTopping} pizza={pizza} />} />
+            <Route path="order" element={<OrderDemo pizza={pizza} />} />
+          </Route>
+        </Routes>
+      </AnimatePresence>
+    </>
   )
 }

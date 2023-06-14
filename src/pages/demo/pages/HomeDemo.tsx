@@ -16,7 +16,11 @@ const buttonVariant = {
     boxShadow: "0px 0px 8px rgb(225,225,225)",
     // # we use array to define keyframe
     // # when using keyframe, the animation will generated based on the sequences 
-    rotateZ: ["0deg","10deg","-10deg","10deg","-10deg", "0deg" ]
+    rotateZ: ["0deg","10deg","-10deg","10deg","0deg"],
+    transition: {
+      // # simple use of repeat
+      rotateZ :{repeat: Infinity}
+    }
   }
 }
 

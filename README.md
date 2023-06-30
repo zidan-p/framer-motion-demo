@@ -1,6 +1,8 @@
 # Framer Montion Demo
 this is repo to store my learning progress and some of cool framer motion component. I create this repo with vite, because of this the project structure is doesn't quite neat. Maybe this repo will updated when i have a free time.
 
+see the preview : 
+https://framer-motion-demo-one.vercel.app/demo
 
 ## NOTE
 ### React Router

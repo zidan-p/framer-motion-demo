@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { PizzaType } from "../DemoPage"
 import { FC } from "react";
 import {motion} from "framer-motion";

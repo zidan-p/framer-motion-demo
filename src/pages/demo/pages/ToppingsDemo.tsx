@@ -12,7 +12,7 @@ type ToppingsDemoProps = {
 
 
 export const ToppingsDemo : FC<ToppingsDemoProps> = ({addTopping, pizza}) => {
-  let toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes'];
+  const toppings = ['mushrooms', 'peppers', 'onions', 'olives', 'extra cheese', 'tomatoes'];
 
   return (
     <>

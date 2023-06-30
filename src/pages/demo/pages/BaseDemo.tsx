@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { PizzaType } from "../DemoPage";
 import { Link } from "react-router-dom";
-import {motion, Variant} from "framer-motion"
+import {motion} from "framer-motion"
 import { pageContainerVariant } from "../DemoPage";
 
 type BaseDemoProps = {

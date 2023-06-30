@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet, useRoutes, Route, Routes, useLocation } from "react-router-dom"
+import { Outlet, Route, Routes, useLocation } from "react-router-dom"
 import { BaseDemo } from "./pages/BaseDemo";
 import { HomeDemo } from "./pages/HomeDemo";
 import { ToppingsDemo } from "./pages/ToppingsDemo";
@@ -67,7 +67,7 @@ export const DemoPage = () => {
 
   const location = useLocation();
   const [pizza, setPizza] = useState<PizzaType>({ base: "", toppings: [] });
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   const addBase = (base : string) => setPizza({ ...pizza, base })
 
@@ -113,7 +113,7 @@ export const DemoPage = () => {
        * NOTE: 
        * `onExitComplete` here was used to make sure modal always close whenever the url change.
        * therefor i didn't have to pass the `setShowModal` to target component.
-       * just use `Link` component to navigate so the modal aumaticlay closed.  
+       * just use `Link` component to navigate so the modal automatically closed.  
        */}
       <AnimatePresence mode="wait" onExitComplete={()=>setShowModal(false)}>
         <Routes location={location} key={location.key}> 

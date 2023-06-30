@@ -15,7 +15,7 @@ export const Sidebar = ({routeList}: {routeList: RouteListType}) => {
             <NavLink
               to={route.path}
               className={({ isActive}) => {
-                let activeClass = isActive? "text-white ": "text-gray-500";
+                const activeClass = isActive? "text-white ": "text-gray-500";
                 return (`hover:bg-gray-700 w-full px-3 py-1 rounded block relative ` + activeClass);
               }}
             >

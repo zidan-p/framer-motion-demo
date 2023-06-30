@@ -1,4 +1,4 @@
-import { RouterProvider, BrowserRouter  } from "react-router-dom";
+import { BrowserRouter  } from "react-router-dom";
 import RootRouter from "./Routes";
 import "./../style/index.css"
 

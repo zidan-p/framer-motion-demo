@@ -44,7 +44,7 @@ const pathVariant = {
 
 export const HomeDemo = () => {
 
-  const [showSubTitle, setShowSubTitle] = useState(true);
+  const [, setShowSubTitle] = useState(true);
 
   useEffect(()=>{
     setTimeout(()=>{setShowSubTitle(false)}, 1500)
@@ -59,7 +59,8 @@ export const HomeDemo = () => {
       className="h-full flex flex-col justify-center"
     >
       <div className="flex justify-center">
-        <svg
+        <motion.svg
+          drag
           className="w-12 text-white"
           fill="none"
           stroke="currentColor"
@@ -75,7 +76,7 @@ export const HomeDemo = () => {
           >
           
           </motion.path>
-        </svg>
+        </motion.svg>
       </div>
       {/** use provided component that render h1 from framer-motion */}
       <motion.h1

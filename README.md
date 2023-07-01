@@ -6,7 +6,7 @@ https://framer-motion-demo-one.vercel.app
 
 ## NOTE
 ### React Router
-At first i wanted am going to to use new `Data API` feature from react router to be used in this project. this `Data API` is easy to use and the `createBrowserRouter` syntax make it possible to use an object as a route. that's mean i can make a root route object that can be used as routing and data for sidebar. 
+At first i wanted to to use new `Data API` feature from react router to be used in this project. this `Data API` is easy to use and the `createBrowserRouter` syntax make it possible to use an object as a route. that's mean i can make a root route object that can be used as routing and data for sidebar. 
 
 But there's a problem. when i was going to create children for a parent route that also passing some state. i don't know how to make it. in documentation it's only shown about root route that passed as argument in `createBrowserRouter` data API. it does't show how to nest child with state in this syntax.  the syntax only pass indepentdent components.
 
